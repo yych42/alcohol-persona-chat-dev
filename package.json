@@ -1,0 +1,47 @@
+{
+	"name": "mi-agent",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/kit": "^2.5.27",
+		"@sveltejs/vite-plugin-svelte": "^4.0.0",
+		"@typescript-eslint/eslint-plugin": "^6.0.0",
+		"@typescript-eslint/parser": "^6.0.0",
+		"autoprefixer": "^10.4.14",
+		"eslint": "^8.28.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-svelte": "^2.45.1",
+		"postcss": "^8.4.24",
+		"postcss-load-config": "^4.0.1",
+		"prettier": "^3.1.0",
+		"prettier-plugin-svelte": "^3.2.6",
+		"svelte": "^5.0.0",
+		"svelte-check": "^4.0.0",
+		"tailwindcss": "^3.3.2",
+		"tslib": "^2.4.1",
+		"typescript": "^5.5.0",
+		"vite": "^5.4.4"
+	},
+	"type": "module",
+	"dependencies": {
+		"@ai-sdk/openai": "^0.0.72",
+		"@ai-sdk/svelte": "^0.0.57",
+		"@tailwindcss/forms": "^0.5.7",
+		"@vercel/analytics": "^1.1.1",
+		"@vercel/kv": "^1.0.0",
+		"ai": "^3.4.33",
+		"nanoid": "^5.0.3",
+		"openai": "^4.19.0",
+		"zod": "^3.23.8"
+	}
+}
