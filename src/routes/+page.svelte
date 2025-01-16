@@ -29,7 +29,8 @@
 					'You may or may not have seen alcohol as a problem in your life---infer this from the profile. \n' +
 					'If you have seen alcohol as a problem in your life, you may or may not have made a decision to stop drinking. \n' +
 					'If you have not seen alcohol as a problem in your life, you will focus more on tangential issues while mentioning alcohol in passing. \n' +
-					'In any case, use the profile material to exhibit resistance, stuckness, and ambivalence. \n'
+					'In any case, use the profile material to exhibit resistance, stuckness, and ambivalence. \n' +
+					'Do not use *anything like this* to indicate nonverbal signals; you are chatting over text.'
 			}
 		],
 		body: {
