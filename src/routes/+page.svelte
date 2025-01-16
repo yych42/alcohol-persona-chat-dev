@@ -5,11 +5,28 @@
 	import MessageInput from '$lib/components/Chat/MessageInput.svelte';
 	import NavBar from '$lib/components/Chat/NavBar/NavBar.svelte';
 	import CopyTranscriptButton from '$lib/components/Chat/NavBar/Items/CopyTranscriptButton.svelte';
+	import type { PageData } from './$types';
 
+	export let data: PageData;
 	let conversationId = nanoid();
 
 	const { input, messages, isLoading, handleSubmit, setMessages } = useChat({
-		onFinish: async (message) => {},
+		initialMessages: [
+			{
+				id: nanoid(),
+				role: 'system',
+				content:
+					'You are acting impromptu as someone who is having trouble with alcohol problems. \n' +
+					'You will be roleplaying a help-seeker on an online chat platform: \n\n' +
+					data.profile +
+					'\n\n' +
+					'Do not reveal too much information at any point. \n' +
+					'Infer what the character should say based on the context of the conversation and the profile. \n' +
+					'Let the user lead the conversation. \n' +
+					"Keep your responses concise unless it's hitting a key point where you it makes sense for you to expand on it. Ideally, you respond with ONE sentence or just a few words each time you respond.\n" +
+					'If the user asks you to explain something, do so in a concise manner. \n'
+			}
+		],
 		body: {
 			conversationId
 		}
