@@ -22,6 +22,7 @@
 					'\n\n' +
 					'Do not reveal too much information at any point. \n' +
 					'Infer what the character should say based on the context of the conversation and the profile. \n' +
+					'Make sure the style of your language matches the profile. \n' +
 					'Let the user lead the conversation. \n' +
 					"Keep your responses concise unless it's hitting a key point where you it makes sense for you to expand on it. Ideally, you respond with ONE sentence or just a few words each time you respond.\n" +
 					'If the user asks you to explain something, do so in a concise manner. \n'
@@ -39,18 +40,7 @@
 			<CopyTranscriptButton messages={$messages} />
 		</NavBar>
 
-		<MessageList
-			{messages}
-			{setMessages}
-			infoCards={[
-				{
-					color: 'blue',
-					remixIcon: 'ri-information-line',
-					header: 'Welcome to the Chat Playground',
-					body: 'This is a simple chat playground where you can test out the chat component. Feel free to send messages and test out the features.'
-				}
-			]}
-		/>
+		<MessageList {messages} {setMessages} infoCards={[]} />
 		<MessageInput {input} {isLoading} {handleSubmit} />
 	</div>
 </div>
