@@ -1,27 +1,25 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import Database from 'better-sqlite3';
+import { env } from '$env/dynamic/private';
+import { Redis } from '@upstash/redis';
 
 export const GET: RequestHandler = async () => {
 	try {
-		// 1. Open the SQLite database
-		const db = new Database('profiles.db');
+		// 1. Connect to Upstash Redis
+		const redis = new Redis({
+			url: env.UPSTASH_REDIS_URL,
+			token: env.UPSTASH_REDIS_TOKEN
+		});
 
-		// 2. Query for a random profile
-		//    The RANDOM() function in SQLite will pick a random row
-		const row = db
-			.prepare('SELECT profile FROM profiles ORDER BY RANDOM() LIMIT 1')
-			.get();
+		// 2. Get a random profile from the 'profiles' set
+		const randomProfile = await redis.srandmember<string>('profiles');
 
-		// 3. Close the database
-		db.close();
-
-		// 4. Return the result as JSON
-		return new Response(JSON.stringify(row), {
+		// 3. Return as JSON
+		return new Response(JSON.stringify({ profile: randomProfile }), {
 			headers: { 'Content-Type': 'application/json' }
 		});
 	} catch (error: any) {
-		console.error(error);
-		return new Response(JSON.stringify({ error: 'Failed to get random profile.' }), {
+		console.error('Failed to get random profile:', error);
+		return new Response(JSON.stringify({ error: 'Failed to retrieve a random profile.' }), {
 			status: 500,
 			headers: { 'Content-Type': 'application/json' }
 		});
