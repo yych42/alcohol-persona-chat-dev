@@ -47,7 +47,7 @@
 				...message,
 				role: message.role === 'user' ? 'assistant' : 'user'
 			}));
-			requestSuggestions(20, flipped_messages as Message[]);
+			requestSuggestions(5, flipped_messages as Message[]);
 		}
 	});
 
